@@ -36,7 +36,20 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "OMX_QCOMExtns.h"
 #include "qc_omx_component.h"
 #ifdef _VQZIP_
-#include "VQZip.h"
+// instead of including #include "VQZip.h" inline the necessary contents:
+struct VQZipConfig {
+    uint32_t dummy;
+    void* pSEIPayload;
+    uint16_t nWidth;
+    uint16_t nHeight;
+};
+
+struct VQZipStats {
+    uint32_t nCount;
+    uint32_t stats[16];
+};
+
+typedef int32_t VQZipStatus;
 #endif
 
 #ifdef _PQ_
